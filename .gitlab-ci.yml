@@ -1,28 +1,28 @@
 image: microsoft/dotnet:latest
 
 stages:
-	- restore
-	- build
-	- test
+    - restore
+    - build
+    - test
 
 variables:
-	test: "Example.Test"
+    test: "Example.Test"
 
-restore:
-	stage: restore
-	variables:
-		solution: "src"
-	script: 
-		- "cd $solution"
-		- "dotnet restore"
+restore: 
+    stage: restore
+    variables:
+        solution: "src"
+    script:
+        - "cd $solution"
+        - "dotnet restore"
 
 build:
-	stage: build
-	script:
-		- "dotnet build"
+    stage: build
+    script:
+        - "dotnet build"
 
 test:
-	stage: test
-	script:
-		- "cd $test"
-		- "dotnet test"
+    stage: test
+    script:
+        - "cd $test"
+        - "dotnet test"
