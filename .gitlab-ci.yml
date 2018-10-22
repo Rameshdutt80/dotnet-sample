@@ -7,14 +7,11 @@ stages:
 
 variables:
     test: "Example.Test"
+    web: "Example.Web"
 
-restore: 
-    stage: restore
-    variables:
-        solution: "src"
-    script:
-        - "cd $solution"
-        - "dotnet restore"
+before_script:
+    - "cd src"
+    - "dotnet restore"
 
 build:
     stage: build
