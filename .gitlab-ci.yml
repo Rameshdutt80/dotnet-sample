@@ -1,13 +1,11 @@
 image: microsoft/dotnet:latest
 
 stages:
-    - restore
     - build
     - test
 
 variables:
     test: "Example.Test"
-    web: "Example.Web"
 
 before_script:
     - "cd src"
