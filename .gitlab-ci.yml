@@ -31,11 +31,3 @@ test:
 
     only:
         - master
-
-publish:
-    stage: publish
-    script:
-        - dotnet build src -c Release
-    only:
-        - master
-        
