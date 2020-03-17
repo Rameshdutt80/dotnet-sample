@@ -3,6 +3,7 @@ image: microsoft/dotnet:latest
 stages:
     - build
     - test
+    - publish
 
 variables:
     test: "Example.Test"
@@ -14,13 +15,12 @@ before_script:
 build:
     stage: build
     script:
-        - "dotnet build -p:Version=1.2.3.4"
+        - dotnet build src -c Release
         - mkdir build
         - echo "created build dir"
         - touch build/info.txt
-    artifacts:
-      paths:
-        - /build/
+    only:
+        - master
 
 test:
     stage: test
@@ -28,4 +28,14 @@ test:
         - echo "testing"
         - "cd $test"
         - "dotnet test"
-        - test -f "build/info.txt"
+
+    only:
+        - master
+
+publish:
+    stage: publish
+    script:
+        - dotnet build src -c Release
+    only:
+        - master
+        
