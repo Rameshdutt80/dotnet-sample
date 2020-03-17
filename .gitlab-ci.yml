@@ -16,10 +16,11 @@ build:
     script:
         - "dotnet build -p:Version=1.2.3.4"
         - mkdir build
+        - echo "created build dir"
         - touch build/info.txt
     artifacts:
       paths:
-        - build/
+        - /build/
 
 test:
     stage: test
