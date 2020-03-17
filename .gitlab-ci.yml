@@ -14,7 +14,7 @@ before_script:
 build:
     stage: build
     script:
-        - "dotnet build"
+        - "dotnet build -p:Version=1.2.3.4"
         - mkdir build
         - touch build/info.txt
     artifacts:
