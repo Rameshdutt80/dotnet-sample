@@ -15,9 +15,16 @@ build:
     stage: build
     script:
         - "dotnet build"
+        - mkdir build
+        - touch build/info.txt
+    artifacts:
+      paths:
+        - build/
 
 test:
     stage: test
     script:
+        - echo "testing"
         - "cd $test"
         - "dotnet test"
+        - test -f "build/info.txt"
